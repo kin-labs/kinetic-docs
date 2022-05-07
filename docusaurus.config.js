@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Mogami',
-  tagline: 'Dinosaurs are cool',
+  tagline: 'Next generation API and SDK for Solana',
   url: 'https://mogami.io',
   baseUrl: '/',
   onBrokenLinks: 'throw',
@@ -39,13 +39,13 @@ const config = {
           editUrl:
             'https://github.com/kin-labs/mogami-io/tree/main/packages/create-mogami-io/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/kin-labs/mogami-io/tree/main/packages/create-mogami-io/templates/shared/',
-        },
+        // blog: {
+        //   showReadingTime: true,
+        //   // Please change this to your repo.
+        //   // Remove this to remove the "edit this page" links.
+        //   editUrl:
+        //     'https://github.com/kin-labs/mogami-io/tree/main/packages/create-mogami-io/templates/shared/',
+        // },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
@@ -60,16 +60,16 @@ const config = {
         title: 'Mogami',
         logo: {
           alt: 'Mogami Logo',
-          src: 'img/mogami-logo.png',
+          src: 'img/kin-logo-small-purple.svg',
         },
         items: [
           {
             type: 'doc',
             docId: 'intro',
             position: 'left',
-            label: 'Tutorial',
+            label: 'Documentation',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          // {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/kin-labs/mogami-io',
             label: 'GitHub',
@@ -90,19 +90,15 @@ const config = {
             ],
           },
           {
-            title: 'Community',
+            title: 'Connect',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/mogami-io',
-              },
-              {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/mogami-io',
+                label: 'Developer Discord',
+                href: 'https://discord.gg/kdRyUNmHDn',
               },
               {
                 label: 'Twitter',
-                href: 'https://twitter.com/mogami-io',
+                href: 'https://twitter.com/kin_ecosystem',
               },
             ],
           },
@@ -110,8 +106,8 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
+                label: 'Homepage',
+                href: 'https://kin.org',
               },
               {
                 label: 'GitHub',
@@ -120,7 +116,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Kin Foundation`,
       },
       prism: {
         theme: lightCodeTheme,
