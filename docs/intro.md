@@ -8,7 +8,7 @@ sidebar_position: 1
 
 Mogami is a suite of tools that make it easy to build apps that integrate Solana. 
 
-It provides a consistent and clean abstraction over the Solana SDKs and enhances it with some commonly requested features like tracking and timing user transactions and webhooks.
+It provides a consistent and clean abstraction over the Solana SDKs and enhances it with some commonly requested features like paying Solana fees on behalf of the user, tracking and timing the users transactions and send out webhooks.
 
 Mogami is aimed at developers that want to build crypto-experiences for the users of their app, hiding a lot of the details about the blockchain out of sight for both the developer as the end user.
 
