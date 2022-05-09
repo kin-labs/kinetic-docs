@@ -7,8 +7,12 @@ sidebar_position: 6
 import { useEffect, useState } from 'react'
 import { Keypair } from '@mogami/keypair'
 import { MogamiSdk } from '@mogami/sdk'
-window.global = window;
-global.Buffer = global.Buffer || require('buffer').Buffer;
+import useIsBrowser from '@docusaurus/useIsBrowser';
+const isBrowser = useIsBrowser()
+if (isBrowser) {
+	window.global = window;
+	global.Buffer = global.Buffer || require('buffer').Buffer;
+}
 const kp = Keypair.fromMnemonicSet('buddy slogan vault million mind busy maid maple tourist warrior tomorrow identify')[0]
 let sdk
 MogamiSdk.setup({ endpoint: 'devnet', index: 1 })
