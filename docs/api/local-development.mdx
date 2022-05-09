@@ -12,4 +12,60 @@ Learn what you need to run a local Mogami API
 - Yarn 1.22.x
 - Docker
 
+## Clone repository, install deps
 
+```shell
+git clone git@github.com:kin-labs/mogami.git
+cd mogami
+yarn install
+```
+
+## Run services
+
+This wil start Postgres and a local Solana network
+
+```shell
+yarn dev:services
+```
+
+## Setup local environment
+
+The local setup is configured using the `.env` file.
+
+In order to get started, copy the `.env.example` to `.env`.
+
+You can later adjust the settings there.
+
+```shell
+cp .env.example .env
+```
+
+After you have set up the environment, you need to initialize the database:
+
+```shell
+yarn prisma db pusb
+````
+
+### Start API
+
+Once this is all done, you can start the API:
+
+```shell
+yarn dev:api
+```
+
+### Start Admin
+
+You can now start the Admin using the following command:
+
+```shell
+yarn dev:admin
+```
+
+### Start Demo
+
+You can now start the Demo using the following command:
+
+```shell
+yarn dev:demo
+```

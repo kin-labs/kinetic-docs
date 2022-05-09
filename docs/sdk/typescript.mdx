@@ -5,3 +5,63 @@ sidebar_position: 1
 # Mogami TypeScript SDK
 
 Learn how to use the Mogami TypeScript SDK
+
+
+# Installation
+
+```shell
+yarn add @mogami/sdk \
+         @mogami/keypair \
+         @mogami/solana \
+         @solana/web3.js \
+         @solana/spl-token \
+         axios \
+         bip39 \
+         ed25519-hd-key \
+         tslib
+```
+
+## Initialize SDK
+
+```ts
+import { MogamiSdk,MogamiSdkConfig } from '@mogami/sdk'
+
+const config: MogamiSdkConfig = {
+	endpoint: 'devnet',
+	index: 1
+}
+const sdk: MogamiSdk = await MogamiSdk.setup(config)
+```
+
+## Generate a Keypair
+
+```ts
+import { Keypair } from '@mogami/keypair'
+
+const mnemonic = Keypair.generateMnemonic()
+const keypair = Keypair.fromMnemonicSet(mnemonic)[0]
+```
+
+## Use the SDK with the Keypair
+
+### Get the balance
+
+```ts
+const balance = await sdk.balance(keypair.publicKey)
+```
+
+### Request an Airdrop
+
+```ts
+const signature = await sdk.requestAirdrop(keypair.publicKey, "42000")
+```
+
+### Make a Transfer
+
+```ts
+const result = await sdk.makeTransfer({
+  amount: "42",
+	destination: "ALisrzsaVqciCxy8r6g7MUrPoRo3CpGxPhwBbZzqZ9bA",
+	owner: keypair,
+})
+```
