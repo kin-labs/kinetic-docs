@@ -1,0 +1,152 @@
+---
+sidebar_position: 6
+---
+
+# Mogami Demo
+
+import { useEffect, useState } from 'react'
+import { Keypair } from '@mogami/keypair'
+import { MogamiSdk } from '@mogami/sdk'
+window.global = window;
+global.Buffer = global.Buffer || require('buffer').Buffer;
+const kp = Keypair.fromMnemonicSet('buddy slogan vault million mind busy maid maple tourist warrior tomorrow identify')[0]
+let sdk
+MogamiSdk.setup({ endpoint: 'devnet', index: 1 })
+	.then(res => sdk = res)
+
+export const DemoPanel1 = ({ keypair }) => {
+	const [signature, setSignature] = useState()
+	const [loading, setLoading] = useState(false)
+	const airdrop = () => {
+		setSignature(null)
+		setLoading(true)
+		sdk.requestAirdrop(keypair.publicKey, 20000).then(res => {
+			setSignature(res)
+			setLoading(false)
+		})
+	}
+	return (
+		<div
+			style={{
+				padding: '18px',
+				marginBottom: '9px',
+				borderWidth: '1px',
+				borderStyle: 'solid',
+				borderColor: '#9d9d9d',
+				borderRadius: '18px'
+			}}
+		>
+			<div>
+				<code>
+					<a href={`https://explorer.solana.com/address/${keypair.publicKey}?cluster=devnet`}>
+						{keypair.publicKey}
+					</a>
+				</code>
+			</div>
+			{ signature && <div>
+				<a href={`https://explorer.solana.com/tx/${signature}?cluster=devnet`}>See Transaction</a>
+			</div>}
+			<button disabled={loading} onClick={airdrop}>{ loading ? 'Airdropping...' : 'Airdrop'}</button>
+		</div>
+	)
+};
+
+export const DemoPanel2 = ({ config }) => (
+	<div
+		style={{
+			padding: '18px',
+			marginBottom: '9px',
+			borderWidth: '1px',
+			borderStyle: 'solid',
+			borderColor: '#9d9d9d',
+			borderRadius: '18px' }}
+	>
+		{config ? `Name: ${config?.app?.name} ` : 'Loading SDK...'}
+	</div>
+);
+
+export const DemoPanel3 = ({ sdk }) => {
+	const [loading, setLoading] = useState(false)
+	const [balance, setBalance] = useState(0)
+	const refresh = () => {
+		setLoading(true);
+		sdk.balance(kp.publicKey).then(res => {
+			setBalance(res.data?.value);
+			setLoading(false);
+		})
+	}
+	useEffect(() => {
+		refresh()
+	}, [balance, setBalance])
+	return (
+		<div
+			style={{
+				padding: '18px',
+				marginBottom: '9px',
+				borderWidth: '1px',
+				borderStyle: 'solid',
+				borderColor: '#9d9d9d',
+				borderRadius: '18px'
+			}}
+		>
+			<div>
+				Balance: {Math.round(balance / 10e4)} KIN
+			</div>
+			<button disabled={loading} onClick={refresh}>
+				{ loading ? 'Refreshing...' : 'Refresh'}
+			</button>
+		</div>
+	)
+};
+
+export const DemoPanel4 = ({ sdk }) => {
+	const [loading, setLoading] = useState(false)
+	const [signature, setSignature] = useState()
+	const [amount, setAmount] = useState('42')
+	const [destination, setDestination] = useState('ALisrzsaVqciCxy8r6g7MUrPoRo3CpGxPhwBbZzqZ9bA')
+	const send = () => {
+		setLoading(true);
+		setSignature(null)
+		sdk.makeTransfer({
+			amount,
+			destination: destination,
+			owner: kp,
+		}).then(res => {
+			setSignature(res?.res?.data?.signature)
+			setLoading(false);
+		})
+	}
+	return (
+		<div
+			style={{
+				padding: '18px',
+				marginBottom: '9px',
+				borderWidth: '1px',
+				borderStyle: 'solid',
+				borderColor: '#9d9d9d',
+				borderRadius: '18px'
+			}}
+		>
+			<div>
+				Send KIN
+			</div>
+			<div>
+				<input value={destination} onChange={e => setDestination(e.target.value)} />
+			</div>
+			<div>
+				<input value={amount} onChange={e => setAmount(e.target.value)} />
+			</div>
+			{ signature && <div>
+				<a href={`https://explorer.solana.com/tx/${signature}?cluster=devnet`}>See Transaction</a>
+			</div>}
+			<button disabled={loading} onClick={send}>
+				{ loading ? 'Sending...' : 'Send'}
+			</button>
+		</div>
+	)
+};
+
+<DemoPanel1 keypair={kp} />
+<DemoPanel2 config={sdk?.config()} />
+{ sdk ? <DemoPanel3 sdk={sdk} /> : null }
+{ sdk ? <DemoPanel4 sdk={sdk} /> : null }
