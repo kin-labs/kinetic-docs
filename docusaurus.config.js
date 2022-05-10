@@ -48,7 +48,20 @@ const config = {
           customCss: require.resolve('./src/css/custom.css'),
         },
       }),
-    ],
+    ], [
+      'redocusaurus',
+      {
+        specs: [
+          {
+            spec: 'https://devnet.mogami.io/api-json',
+            route: '/mogami/api-docs/',
+          },
+        ],
+        theme: {
+          primaryColor: '#6F41E8',
+        },
+      },
+    ]
   ],
 
   themeConfig:
@@ -70,7 +83,11 @@ const config = {
             position: 'left',
             label: 'Documentation',
           },
-          // {to: '/blog', label: 'Blog', position: 'left'},
+          {
+            to: '/mogami/api-docs',
+            position: 'left',
+            label: 'API Docs',
+          },
           {
             href: 'https://github.com/kin-labs/mogami-io',
             label: 'GitHub',
