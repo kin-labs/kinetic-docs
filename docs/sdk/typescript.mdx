@@ -17,7 +17,7 @@ yarn add @mogami/sdk @mogami/keypair @mogami/solana
 
 Initialise the SDK so that you have access to all of Mogami's methods.
 ```ts
-import { MogamiSdk,MogamiSdkConfig } from '@mogami/sdk'
+import { MogamiSdk, MogamiSdkConfig } from '@mogami/sdk'
 
 const config: MogamiSdkConfig = {
 	environment: 'devnet',
@@ -25,6 +25,18 @@ const config: MogamiSdkConfig = {
 }
 const sdk: MogamiSdk = await MogamiSdk.setup(config)
 // Note - Setting up the Mogami SDK is an async action
+```
+If you're self-hosting Mogami, you can include an optional endpoint value pointing at your server.
+
+Here's the config Type for reference: 
+```ts
+export interface MogamiSdkConfig {
+    index: number;
+    endpoint?: MogamiSdkEndpoint;
+    environment: MogamiSdkEnvironment;
+    logger?: MogamiSdkLogger;
+    solanaRpcEndpoint?: string;
+}
 ```
 
 ## Generate a Keypair
@@ -79,5 +91,5 @@ makeTransfer({ amount, commitment, destination, owner, referenceId, referenceTyp
     referenceId?: string;
     referenceType?: string;
     type?: TransactionType;
-}): Promise<import("../generated").AppTransaction>;
+}): Promise<AppTransaction>;
 ```
