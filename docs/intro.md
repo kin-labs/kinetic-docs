@@ -56,6 +56,10 @@ The end-to-end test of the Mogami Admin app using Cypress.
 
 The end-to-end test of the Mogami Api app using Jest/Supertest.
 
+### [Mogami SDK e2e](https://github.com/kin-labs/mogami/tree/dev/apps/sdk-e2e)
+
+The end-to-end test of the Mogami SDK app using Jest.
+
 ### [Mogami Solana Network](https://github.com/kin-labs/mogami-solana-network)
 
 The Mogami Solana Network is a Docker-based Solana network that's configured for usage with the Mogami API in a local or test environment.
