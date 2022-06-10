@@ -10,31 +10,40 @@ Learn how to use the Mogami TypeScript SDK
 # Installation
 
 ```shell
-yarn add @mogami/sdk \
-         @mogami/keypair \
-         @mogami/solana \
-         @solana/web3.js \
-         @solana/spl-token \
-         axios \
-         bip39 \
-         ed25519-hd-key \
-         tslib
+yarn add @mogami/sdk @mogami/keypair @mogami/solana 
 ```
 
 ## Initialize SDK
 
+Initialise the SDK so that you have access to all of Mogami's methods.
 ```ts
-import { MogamiSdk,MogamiSdkConfig } from '@mogami/sdk'
+import { MogamiSdk, MogamiSdkConfig } from '@mogami/sdk'
 
 const config: MogamiSdkConfig = {
-	endpoint: 'devnet',
+	environment: 'devnet',
 	index: 1
 }
 const sdk: MogamiSdk = await MogamiSdk.setup(config)
+// Note - Setting up the Mogami SDK is an async action
+```
+If you're self-hosting Mogami, you can include an optional endpoint value pointing at your server.
+
+Here's the config Type for reference: 
+```ts
+export interface MogamiSdkConfig {
+    index: number;
+    endpoint?: MogamiSdkEndpoint;
+    environment: MogamiSdkEnvironment;
+    logger?: MogamiSdkLogger;
+    solanaRpcEndpoint?: string;
+}
 ```
 
 ## Generate a Keypair
 
+A Keypair contains a 'secretKey' that you can use to sign transactions and a 'publicKey' that you can use as an address for paying towards or checking a balance, etc.
+
+If you use a mnemonic to generate your keypair, you'll be able to use that mnemonic to recreate your wallet in other applications / wallets should you choose to do so.
 ```ts
 import { Keypair } from '@mogami/keypair'
 
@@ -45,23 +54,42 @@ const keypair = Keypair.fromMnemonicSet(mnemonic)[0]
 ## Use the SDK with the Keypair
 
 ### Get the balance
+Use a publicKey to check your Kin balance.
 
 ```ts
 const balance = await sdk.balance(keypair.publicKey)
 ```
 
 ### Request an Airdrop
+Send Kin to a publicKey on the Solana devnet.
+
+Airdrops take some time to complete as we make sure the transaction has been confirmed on the blockchain before returning a response. 
 
 ```ts
 const signature = await sdk.requestAirdrop(keypair.publicKey, "42000")
 ```
 
 ### Make a Transfer
+Send Kin from a Keypair (as you need the privateKey) to a publicKey on the blockchain.
+
+You can optionally set the commitment level before returning ('Confirmed', 'Finalized' or Processed), the transaction type, or add a referenceId / referenceType. 
 
 ```ts
 const result = await sdk.makeTransfer({
-  amount: "42",
+  	amount: "42",
 	destination: "ALisrzsaVqciCxy8r6g7MUrPoRo3CpGxPhwBbZzqZ9bA",
 	owner: keypair,
 })
+```
+Here's the makeTransfer Type for reference: 
+```ts
+makeTransfer({ amount, commitment, destination, owner, referenceId, referenceType, type, }: {
+    amount: string;
+    commitment?: Commitment;
+    destination: string;
+    owner: Keypair;
+    referenceId?: string;
+    referenceType?: string;
+    type?: TransactionType;
+}): Promise<AppTransaction>;
 ```
