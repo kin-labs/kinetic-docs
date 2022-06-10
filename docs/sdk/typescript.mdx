@@ -64,8 +64,20 @@ You can optionally set the commitment level before returning ('Confirmed', 'Fina
 
 ```ts
 const result = await sdk.makeTransfer({
-  amount: "42",
+  	amount: "42",
 	destination: "ALisrzsaVqciCxy8r6g7MUrPoRo3CpGxPhwBbZzqZ9bA",
 	owner: keypair,
 })
+```
+Here's the makeTransfer Type for reference: 
+```ts
+makeTransfer({ amount, commitment, destination, owner, referenceId, referenceType, type, }: {
+    amount: string;
+    commitment?: Commitment;
+    destination: string;
+    owner: Keypair;
+    referenceId?: string;
+    referenceType?: string;
+    type?: TransactionType;
+}): Promise<import("../generated").AppTransaction>;
 ```
