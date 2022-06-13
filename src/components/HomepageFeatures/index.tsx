@@ -14,7 +14,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Mogami was designed from the ground up to be easily installed and
+        Kinetic was designed from the ground up to be easily installed and
         used to get your application up and running quickly.
       </>
     ),
@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Mogami lets you focus on your app, and we&apos;ll do the chores. Go
+        Kinetic lets you focus on your app, and we&apos;ll do the chores. Go
         ahead and install the SDK in your application.
       </>
     ),
@@ -34,7 +34,7 @@ const FeatureList: FeatureItem[] = [
     Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend your app layout by using the Mogami SDK and enable crypto today. Mogami can
+        Extend your app layout by using the Kinetic SDK and enable crypto today. Kinetic can
         be extended while reusing its solid basis.
       </>
     ),
