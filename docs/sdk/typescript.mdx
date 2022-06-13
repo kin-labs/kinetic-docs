@@ -2,9 +2,9 @@
 sidebar_position: 1
 ---
 
-# Mogami TypeScript SDK
+# Kinetic TypeScript SDK
 
-Learn how to use the Mogami TypeScript SDK
+Learn how to use the Kinetic TypeScript SDK
 
 
 # Installation
@@ -15,7 +15,7 @@ yarn add @mogami/sdk @mogami/keypair @mogami/solana
 
 ## Initialize SDK
 
-Initialise the SDK so that you have access to all of Mogami's methods.
+Initialise the SDK so that you have access to all of Kinetic's methods.
 ```ts
 import { MogamiSdk, MogamiSdkConfig } from '@mogami/sdk'
 
@@ -24,9 +24,9 @@ const config: MogamiSdkConfig = {
 	index: 1
 }
 const sdk: MogamiSdk = await MogamiSdk.setup(config)
-// Note - Setting up the Mogami SDK is an async action
+// Note - Setting up the Kinetic SDK is an async action
 ```
-If you're self-hosting Mogami, you can include an optional endpoint value pointing at your server.
+If you're self-hosting Kinetic, you can include an optional endpoint value pointing at your server.
 
 Here's the config Type for reference: 
 ```ts
