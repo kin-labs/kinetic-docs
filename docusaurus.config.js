@@ -8,7 +8,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'Kinetic',
   tagline: 'Next generation API and SDK for Solana',
-  url: 'https://mogami.io',
+  url: 'https://kinetic.kin.org',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -36,7 +36,7 @@ const config = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/kin-labs/mogami-io/tree/main/',
+          editUrl: 'https://github.com/kin-labs/kinetic-docs/tree/main/',
         },
         // blog: {
         //   showReadingTime: true,
@@ -72,7 +72,7 @@ const config = {
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/kin-labs/mogami-io',
+            href: 'https://github.com/kin-labs/kinetic-docs',
             label: 'GitHub',
             position: 'right',
           },
@@ -112,7 +112,7 @@ const config = {
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/kin-labs/mogami-io',
+                href: 'https://github.com/kin-labs/kinetic-docs',
               },
             ],
           },
