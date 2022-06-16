@@ -10,31 +10,31 @@ Learn how to use the Kinetic TypeScript SDK
 # Installation
 
 ```shell
-yarn add @mogami/sdk @mogami/keypair @mogami/solana 
+yarn add @kin-kinetic/sdk @kin-kinetic/keypair @kin-kinetic/solana 
 ```
 
 ## Initialize SDK
 
 Initialise the SDK so that you have access to all of Kinetic's methods.
 ```ts
-import { MogamiSdk, MogamiSdkConfig } from '@mogami/sdk'
+import { KineticSdk, KineticSdkConfig } from '@kin-kinetic/sdk'
 
-const config: MogamiSdkConfig = {
+const config: KineticSdkConfig = {
 	environment: 'devnet',
 	index: 1
 }
-const sdk: MogamiSdk = await MogamiSdk.setup(config)
+const sdk: KineticSdk = await KineticSdk.setup(config)
 // Note - Setting up the Kinetic SDK is an async action
 ```
 If you're self-hosting Kinetic, you can include an optional endpoint value pointing at your server.
 
 Here's the config Type for reference: 
 ```ts
-export interface MogamiSdkConfig {
+export interface KineticSdkConfig {
     index: number;
-    endpoint?: MogamiSdkEndpoint;
-    environment: MogamiSdkEnvironment;
-    logger?: MogamiSdkLogger;
+    endpoint?: KineticSdkEndpoint;
+    environment: KineticSdkEnvironment;
+    logger?: KineticSdkLogger;
     solanaRpcEndpoint?: string;
 }
 ```
@@ -45,7 +45,7 @@ A Keypair contains a 'secretKey' that you can use to sign transactions and a 'pu
 
 If you use a mnemonic to generate your keypair, you'll be able to use that mnemonic to recreate your wallet in other applications / wallets should you choose to do so.
 ```ts
-import { Keypair } from '@mogami/keypair'
+import { Keypair } from '@kin-kinetic/keypair'
 
 const mnemonic = Keypair.generateMnemonic()
 const keypair = Keypair.fromMnemonicSet(mnemonic)[0]
