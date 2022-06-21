@@ -20,10 +20,10 @@
   "dependencies": {
     "@docusaurus/core": "2.0.0-beta.20",
     "@docusaurus/preset-classic": "2.0.0-beta.20",
+    "@kin-kinetic/keypair": "^1.0.0-beta.10",
+    "@kin-kinetic/sdk": "^1.0.0-beta.10",
+    "@kin-kinetic/solana": "^1.0.0-beta.10",
     "@mdx-js/react": "^1.6.22",
-    "@kin-kinetic/keypair": "^1.0.0-beta.0",
-    "@kin-kinetic/sdk": "^1.0.0-beta.0",
-    "@kin-kinetic/solana": "^1.0.0-beta.0",
     "@solana/spl-token": "^0.2.0",
     "@solana/web3.js": "^1.41.4",
     "axios": "^0.27.2",

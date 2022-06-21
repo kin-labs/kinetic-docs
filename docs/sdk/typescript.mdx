@@ -43,12 +43,21 @@ export interface KineticSdkConfig {
 
 A Keypair contains a 'secretKey' that you can use to sign transactions and a 'publicKey' that you can use as an address for paying towards or checking a balance, etc.
 
-If you use a mnemonic to generate your keypair, you'll be able to use that mnemonic to recreate your wallet in other applications / wallets should you choose to do so.
+Using `Keypair.random()` will also return a mnemonic that you can use to recreate you wallet in other applications / wallets should you choose to do so.
 ```ts
 import { Keypair } from '@kin-kinetic/keypair'
 
-const mnemonic = Keypair.generateMnemonic()
-const keypair = Keypair.fromMnemonicSet(mnemonic)[0]
+const keypair = Keypair.random()
+const { mnemonic, secretKey, publicKey } = keypair;
+```
+## Create a Kin Account
+Use your keypair to create your account on the Solana blockchain.
+```ts
+const account = await sdk.createAccount({ owner: keypair })
+```
+Generate your keypair from your mnemonic for an existing account:
+```ts
+const keypair = Keypair.fromMnemonic(mnemonic);
 ```
 
 ## Use the SDK with the Keypair
@@ -57,7 +66,7 @@ const keypair = Keypair.fromMnemonicSet(mnemonic)[0]
 Use a publicKey to check your Kin balance.
 
 ```ts
-const balance = await sdk.balance(keypair.publicKey)
+const balance = await sdk.getBalance({ account: keypair.publicKey })
 ```
 
 ### Request an Airdrop
@@ -66,7 +75,7 @@ Send Kin to a publicKey on the Solana devnet.
 Airdrops take some time to complete as we make sure the transaction has been confirmed on the blockchain before returning a response. 
 
 ```ts
-const signature = await sdk.requestAirdrop(keypair.publicKey, "42000")
+const signature = await sdk.requestAirdrop({ account: keypair.publicKey, amount: '1000' })
 ```
 
 ### Make a Transfer
