@@ -49,6 +49,24 @@ const config = {
         },
       }),
     ],
+     // Redocusaurus config
+    [
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            spec: 'https://raw.githubusercontent.com/kin-labs/kinetic/dev/api-swagger.json',
+            route: '/api/',
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: '#1890ff',
+        },
+      },
+    ],
   ],
 
   themeConfig:

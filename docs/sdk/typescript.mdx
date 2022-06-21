@@ -2,6 +2,17 @@
 sidebar_position: 1
 ---
 
+export const API = () => {
+    const useDocusaurusContext = require('@docusaurus/useDocusaurusContext')
+    console.log("🚀 ~ useDocusaurusContext", useDocusaurusContext)
+    const {siteConfig, ...rest} = useDocusaurusContext.default();
+  console.log("🚀 ~ siteConfig", siteConfig)
+  console.log("🚀 ~ rest", rest)
+    return (<span>ELEPHANT</span>)
+}
+
+<API />
+
 # Kinetic TypeScript SDK
 
 Learn how to use the Kinetic TypeScript SDK
