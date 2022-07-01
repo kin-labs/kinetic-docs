@@ -2,6 +2,25 @@
 sidebar_position: 1
 ---
 
+export const API = () => {
+    const useDocusaurusContext = require('@docusaurus/useDocusaurusContext')
+    // console.log("🚀 ~ useDocusaurusContext", useDocusaurusContext)
+    const {siteConfig, globalData, ...rest} = useDocusaurusContext.default();
+//   console.log("🚀 ~ siteConfig", siteConfig)
+//   console.log("🚀 ~ globalData", globalData)
+  console.log('🚀 ~ paths')
+  const paths = globalData["docusaurus-plugin-redoc"]["plugin-redoc-0"].spec.paths
+  return (<div>
+    {Object.entries(paths).map(([key, value]) => {
+        console.log("🚀 ~ ", key,  value)
+        return <p key={key}>{key}</p>
+    })}
+  </div>)
+    // return (<span>ELEPHANT</span>)
+}
+
+<API />
+
 # Kinetic TypeScript SDK
 
 Learn how to use the Kinetic TypeScript SDK
