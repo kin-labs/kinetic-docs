@@ -10,30 +10,34 @@ Learn how to use the Kinetic TypeScript SDK
 # Installation
 
 ```shell
-yarn add @kin-kinetic/sdk @kin-kinetic/keypair @kin-kinetic/solana 
+yarn add @kin-kinetic/sdk @kin-kinetic/keypair @kin-kinetic/solana
 ```
 
 ## Initialize SDK
 
 Initialise the SDK so that you have access to all of Kinetic's methods.
+
 ```ts
 import { KineticSdk, KineticSdkConfig } from '@kin-kinetic/sdk'
 
+// Note - this example is using a demo app on the Kinetic Sandbox provided by the Kin Foundation.
 const config: KineticSdkConfig = {
+	endpoint: 'https://sandbox.kinetic.host',
 	environment: 'devnet',
 	index: 1
 }
-const sdk: KineticSdk = await KineticSdk.setup(config)
 // Note - Setting up the Kinetic SDK is an async action
+const sdk: KineticSdk = await KineticSdk.setup(config)
 ```
 If you're self-hosting Kinetic, you can include an optional endpoint value pointing at your server.
 
-Here's the config Type for reference: 
+Here's the config Type for reference:
 ```ts
 export interface KineticSdkConfig {
     index: number;
-    endpoint?: KineticSdkEndpoint;
-    environment: KineticSdkEnvironment;
+    endpoint: string;
+  	environment: KineticSdkEnvironment;
+    headers?: Record<string, string>;
     logger?: KineticSdkLogger;
     solanaRpcEndpoint?: string;
 }
@@ -72,7 +76,7 @@ const balance = await sdk.getBalance({ account: keypair.publicKey })
 ### Request an Airdrop
 Send Kin to a publicKey on the Solana devnet.
 
-Airdrops take some time to complete as we make sure the transaction has been confirmed on the blockchain before returning a response. 
+Airdrops take some time to complete as we make sure the transaction has been confirmed on the blockchain before returning a response.
 
 ```ts
 const signature = await sdk.requestAirdrop({ account: keypair.publicKey, amount: '1000' })
@@ -81,7 +85,7 @@ const signature = await sdk.requestAirdrop({ account: keypair.publicKey, amount:
 ### Make a Transfer
 Send Kin from a Keypair (as you need the privateKey) to a publicKey on the blockchain.
 
-You can optionally set the commitment level before returning ('Confirmed', 'Finalized' or Processed), the transaction type, or add a referenceId / referenceType. 
+You can optionally set the commitment level before returning ('Confirmed', 'Finalized' or Processed), the transaction type, or add a referenceId / referenceType.
 
 ```ts
 const result = await sdk.makeTransfer({
@@ -90,15 +94,19 @@ const result = await sdk.makeTransfer({
 	owner: keypair,
 })
 ```
-Here's the makeTransfer Type for reference: 
+Here's the makeTransfer Type for reference:
 ```ts
-makeTransfer({ amount, commitment, destination, owner, referenceId, referenceType, type, }: {
-    amount: string;
+export interface TransferDestination {
+    amount: string
+    destination: PublicKeyString
+}
+export interface MakeTransferOptions extends TransferDestination {
     commitment?: Commitment;
-    destination: string;
+    mint?: string;
     owner: Keypair;
     referenceId?: string;
     referenceType?: string;
+    senderCreate?: boolean;
     type?: TransactionType;
-}): Promise<AppTransaction>;
+}
 ```

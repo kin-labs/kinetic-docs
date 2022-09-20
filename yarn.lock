@@ -1637,54 +1637,53 @@
     "@jridgewell/resolve-uri" "^3.0.3"
     "@jridgewell/sourcemap-codec" "^1.4.10"
 
-"@kin-kinetic/keypair@1.0.0-beta.10", "@kin-kinetic/keypair@^1.0.0-beta.0":
-  version "1.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@kin-kinetic/keypair/-/keypair-1.0.0-beta.10.tgz#bd6cc48321d2202d6e9ece702eb723eb279bbf78"
-  integrity sha512-9xTo1199BDBohXFziv+s6Ob+62Ael9EfJSWHA6dbcVFc0lUXk+NERANsb4X6KQoZJLcdyz6lwYU3eqoKWl7Lxw==
+"@kin-kinetic/keypair@1.0.0-rc.1", "@kin-kinetic/keypair@^1.0.0-beta.10":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@kin-kinetic/keypair/-/keypair-1.0.0-rc.1.tgz#5f02e965897873c029461caa8902ed4102a91fda"
+  integrity sha512-18YrsgwzHOkg65Ylhs4oO0GK3iGTmShuKJJ8US9KXqMJCY6MG7ABrPPmiPZS+6mw0ktYdeZ/XJqt1OdL5cA+iA==
   dependencies:
-    "@scure/bip39" "^1.0.0"
-    "@solana/web3.js" "^1.43.2"
-    create-hmac "^1.1.7"
+    "@scure/bip39" "^1.1.0"
+    "@solana/web3.js" "1.60.0"
+    ed25519-hd-key "^1.3.0"
     tslib "^2.4.0"
 
-"@kin-kinetic/sdk@^1.0.0-beta.0":
-  version "1.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@kin-kinetic/sdk/-/sdk-1.0.0-beta.10.tgz#c53b713e2b345c78a2a35fdd9907165fbff2c995"
-  integrity sha512-DQlLnxLt8cR3HKy3iq/fBPA7Sva8j2EqSp23EBQHfZoEQy+c3yJwQqgXJh4Pqsux2LmJivgipQNM+MNNv9obOQ==
+"@kin-kinetic/sdk@^1.0.0-beta.10":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@kin-kinetic/sdk/-/sdk-1.0.0-rc.1.tgz#4d3e8fbdb85c551747cd6b165241da29841482ae"
+  integrity sha512-o+UmlD7fjgcG/lH1gYJVOzDOnpbR9ja2FBr65THQM89tkKIdoypmP/j9jD0zvzxozDpY4oL3sz/XSwx2hqTQlA==
   dependencies:
-    "@kin-kinetic/keypair" "1.0.0-beta.10"
-    "@kin-kinetic/solana" "1.0.0-beta.10"
-    "@kin-tools/kin-memo" "^1.5.0"
-    "@kin-tools/kin-transaction" "^1.5.0"
-    "@scure/bip39" "^1.0.0"
-    "@solana/spl-token" "^0.2.0"
-    "@solana/web3.js" "^1.43.2"
+    "@kin-kinetic/keypair" "1.0.0-rc.1"
+    "@kin-kinetic/solana" "1.0.0-rc.1"
+    "@kin-tools/kin-memo" "^1.8.1"
+    "@kin-tools/kin-transaction" "^1.8.1"
+    "@scure/bip39" "^1.1.0"
+    "@solana/spl-token" "^0.3.4"
+    "@solana/web3.js" "1.60.0"
     axios "^0.27.2"
-    create-hmac "^1.1.7"
+    ed25519-hd-key "^1.3.0"
     tslib "^2.4.0"
 
-"@kin-kinetic/solana@1.0.0-beta.10", "@kin-kinetic/solana@^1.0.0-beta.0":
-  version "1.0.0-beta.10"
-  resolved "https://registry.yarnpkg.com/@kin-kinetic/solana/-/solana-1.0.0-beta.10.tgz#69cc2dbcdbc87b19a7fa118455fa1387348113e0"
-  integrity sha512-MvQHNssdaEO+wXu7ijKqqPFHvTqSmLDoB3WDNywETXBfuh6pmgQrqD1xOSC2SVCnZH5ZQI3XYLn1nNg7qTVnRA==
+"@kin-kinetic/solana@1.0.0-rc.1", "@kin-kinetic/solana@^1.0.0-beta.10":
+  version "1.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@kin-kinetic/solana/-/solana-1.0.0-rc.1.tgz#981d13e26b583aa18145ab5d9c4e6c077ea17ce4"
+  integrity sha512-SIrkQ1nYTsR9DxIm97G878rFwNA1mz0mXDujN0PUAsFE2NLiQim5J8vVeYvRgZ3PV5OYIYt2Vpm4Vzr+EVwOcA==
   dependencies:
-    "@kin-kinetic/keypair" "1.0.0-beta.10"
-    "@scure/bip39" "^1.0.0"
-    "@solana/spl-token" "^0.2.0"
-    "@solana/web3.js" "^1.43.2"
+    "@kin-tools/kin-memo" "^1.8.1"
+    "@kin-tools/kin-transaction" "^1.8.1"
+    "@solana/spl-token" "^0.3.4"
+    "@solana/web3.js" "1.60.0"
     axios "^0.27.2"
-    create-hmac "^1.1.7"
     tslib "^2.4.0"
 
-"@kin-tools/kin-memo@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@kin-tools/kin-memo/-/kin-memo-1.5.0.tgz#a6cdce3b9960f7df92725d24f6641f3d0408f5c5"
-  integrity sha512-KfZ9G+EyMP0r10tNf14P9+LJ3L8dyCJzLpvrJE4s4UAeIR6ftlzXyz0unp37rWfeEMJGH8asGK1sqwyM+0poSQ==
+"@kin-tools/kin-memo@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@kin-tools/kin-memo/-/kin-memo-1.8.1.tgz#f079b768848275280e632d82aa88d1d028ee4850"
+  integrity sha512-adEs7djBcqv2w+Nl0tN4PCVgHwX1lP51cfKSRPGNmW0uJqPSdObob9T/mx0pvgxkV+LOruvUr1tO8UKq1SSN6g==
 
-"@kin-tools/kin-transaction@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@kin-tools/kin-transaction/-/kin-transaction-1.5.0.tgz#dc11e73cd9625b3646897b96a429cca0b0430575"
-  integrity sha512-QZsEppFedgEEhCcjeQ1FjFnXnODZzJlQoSmdLg8+E85eMwYzgQWOLV0YDeLxIyBeaXpC37jaY62Dh7NH9yM67A==
+"@kin-tools/kin-transaction@^1.8.1":
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/@kin-tools/kin-transaction/-/kin-transaction-1.8.1.tgz#39414a8eb62c8c45426c05e8794fe5e293a5309b"
+  integrity sha512-bGU4Teu2gEc2nENZCkgzYSJFy/x9FpWzkidEn9wZbep6xaDoGG8BO3VYbf2h/k5/WJ7go3d//f/YKsgtWMZ0xA==
 
 "@leichtgewicht/ip-codec@^2.0.1":
   version "2.0.4"
@@ -1726,10 +1725,25 @@
   resolved "https://registry.yarnpkg.com/@mdx-js/util/-/util-1.6.22.tgz#219dfd89ae5b97a8801f015323ffa4b62f45718b"
   integrity sha512-H1rQc1ZOHANWBvPcW+JpGwr+juXSxM8Q8YCkm3GhZd8REu1fHR3z99CErO1p9pkcfcxZnMdIZdIsXkOHY0NilA==
 
+"@noble/ed25519@^1.7.0":
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/@noble/ed25519/-/ed25519-1.7.1.tgz#6899660f6fbb97798a6fbd227227c4589a454724"
+  integrity sha512-Rk4SkJFaXZiznFyC/t77Q0NKS4FL7TLJJsVG2V2oiEq3kJVeTdxysEe/yRWSpnWMe808XRDJ+VFh5pt/FN5plw==
+
+"@noble/hashes@^1.1.2":
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.1.2.tgz#e9e035b9b166ca0af657a7848eb2718f0f22f183"
+  integrity sha512-KYRCASVTv6aeUi1tsF8/vpyR7zpfs3FUzy2Jqm+MU+LmUKhQ0y2FpfwqkCcxSg2ua4GALJd8k2R76WxwZGbQpA==
+
 "@noble/hashes@~1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.1.1.tgz#c056d9b7166c1e7387a7453c2aff199bf7d88e5f"
   integrity sha512-Lkp9+NijmV7eSVZqiUvt3UCuuHeJpUVmRrvh430gyJjJiuJMqkeHf6/A9lQ/smmbWV/0spDeJscscPzyB4waZg==
+
+"@noble/secp256k1@^1.6.3":
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/@noble/secp256k1/-/secp256k1-1.7.0.tgz#d15357f7c227e751d90aa06b05a0e5cf993ba8c1"
+  integrity sha512-kbacwGSsH/CTout0ZnZWxnW1B+jH/7r/WAAKLBtrRJ/+CUH7lgmQzl3GTrQua3SGKWNSDsS6lmjnDpIJ5Dxyaw==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -1762,7 +1776,7 @@
   resolved "https://registry.yarnpkg.com/@scure/base/-/base-1.1.1.tgz#ebb651ee52ff84f420097055f4bf46cfba403938"
   integrity sha512-ZxOhsSyxYwLJj3pLZCefNitxsj093tb2vq90mp2txoYeBqbcjDjqFhyM8eUjq/uFm6zJ+mUuqxlS2FkuSY1MTA==
 
-"@scure/bip39@^1.0.0":
+"@scure/bip39@^1.1.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@scure/bip39/-/bip39-1.1.0.tgz#92f11d095bae025f166bef3defcc5bf4945d419a"
   integrity sha512-pwrPOS16VeTKg98dYXQyIjJEcWfz7/1YJIwxUEPFfQPtc86Ym/1sVgQ2RLoD43AazMk2l/unK4ITySSpW2+82w==
@@ -1828,7 +1842,37 @@
     "@solana/web3.js" "^1.32.0"
     start-server-and-test "^1.14.0"
 
-"@solana/web3.js@^1.32.0", "@solana/web3.js@^1.41.4", "@solana/web3.js@^1.43.2":
+"@solana/spl-token@^0.3.4":
+  version "0.3.5"
+  resolved "https://registry.yarnpkg.com/@solana/spl-token/-/spl-token-0.3.5.tgz#cabf9f92d755589420b46e457b9b10a879e755aa"
+  integrity sha512-0bGC6n415lGjKu02gkLOIpP1wzndSP0SHwN9PefJ+wKAhmfU1rl3AV1Pa41uap2kzSCD6F9642ngNO8KXPvh/g==
+  dependencies:
+    "@solana/buffer-layout" "^4.0.0"
+    "@solana/buffer-layout-utils" "^0.2.0"
+    buffer "^6.0.3"
+
+"@solana/web3.js@1.60.0":
+  version "1.60.0"
+  resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.60.0.tgz#279dd95ab60d24c32dec5337b37db0d82e854bdd"
+  integrity sha512-gXwUPOruR786Mbce4n5cM2JA00UvRLuoUAQ5Me/XvY49Tqb8u4umifPY/rzWigJxs3XDCN2i2OT1avYjoePLMw==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@noble/ed25519" "^1.7.0"
+    "@noble/hashes" "^1.1.2"
+    "@noble/secp256k1" "^1.6.3"
+    "@solana/buffer-layout" "^4.0.0"
+    bigint-buffer "^1.1.5"
+    bn.js "^5.0.0"
+    borsh "^0.7.0"
+    bs58 "^4.0.1"
+    buffer "6.0.1"
+    fast-stable-stringify "^1.0.0"
+    jayson "^3.4.4"
+    node-fetch "2"
+    rpc-websockets "^7.5.0"
+    superstruct "^0.14.2"
+
+"@solana/web3.js@^1.32.0", "@solana/web3.js@^1.41.4":
   version "1.44.0"
   resolved "https://registry.yarnpkg.com/@solana/web3.js/-/web3.js-1.44.0.tgz#233f7bd268520a0ce852ff7f92ded150c5fad0f5"
   integrity sha512-KHf7o8sM5FlxYGHGroD7IJeCCOmjFITdBIXq4cO5xPFQ8O6Y26FWfYqIXqY1dXI29t240g0m1GYPssCp5UVgZg==
@@ -2881,7 +2925,7 @@ buffer@6.0.1:
     base64-js "^1.3.1"
     ieee754 "^1.2.1"
 
-buffer@~6.0.3:
+buffer@^6.0.3, buffer@~6.0.3:
   version "6.0.3"
   resolved "https://registry.yarnpkg.com/buffer/-/buffer-6.0.3.tgz#2ace578459cc8fbe2a70aaa8f52ee63b6a74c6c6"
   integrity sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==
@@ -3353,7 +3397,7 @@ create-hash@^1.1.0, create-hash@^1.1.2:
     ripemd160 "^2.0.1"
     sha.js "^2.4.0"
 
-create-hmac@1.1.7, create-hmac@^1.1.4, create-hmac@^1.1.7:
+create-hmac@1.1.7, create-hmac@^1.1.4:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/create-hmac/-/create-hmac-1.1.7.tgz#69170c78b3ab957147b2b8b04572e47ead2243ff"
   integrity sha512-MJG9liiZ+ogc4TzUwuvbER1JRdgvUFSB5+VR/g5h82fGaIRWMWddtKBHi7/sVhfjQZ6SehlyhvQYrcYkaUIpLg==
@@ -3777,6 +3821,14 @@ ed25519-hd-key@^1.2.0:
   integrity sha512-pwES3tQ4Z8g3sfIBZEgtuTwFtHq5AlB9L8k9a48k7qPn74q2OmgrrgkdwyJ+P2GVTOBVCClAC7w21Wpksso3gw==
   dependencies:
     bip39 "3.0.2"
+    create-hmac "1.1.7"
+    tweetnacl "1.0.3"
+
+ed25519-hd-key@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/ed25519-hd-key/-/ed25519-hd-key-1.3.0.tgz#e0bd2be4c07e15c753d5ed3aca30744e321b7c78"
+  integrity sha512-IWwAyiiuJQhgu3L8NaHb68eJxTu2pgCwxIBdgpLJdKpYZM46+AXePSVTr7fkNKaUOfOL4IrjEUaQvyVRIDP7fg==
+  dependencies:
     create-hmac "1.1.7"
     tweetnacl "1.0.3"
 
@@ -6872,7 +6924,7 @@ ripemd160@^2.0.0, ripemd160@^2.0.1:
     hash-base "^3.0.0"
     inherits "^2.0.1"
 
-rpc-websockets@^7.4.2:
+rpc-websockets@^7.4.2, rpc-websockets@^7.5.0:
   version "7.5.0"
   resolved "https://registry.yarnpkg.com/rpc-websockets/-/rpc-websockets-7.5.0.tgz#bbeb87572e66703ff151e50af1658f98098e2748"
   integrity sha512-9tIRi1uZGy7YmDjErf1Ax3wtqdSSLIlnmL5OtOzgd5eqPKbsPpwDP5whUDO2LQay3Xp0CcHlcNSGzacNRluBaQ==
