@@ -4,4 +4,91 @@ sidebar_position: 1
 
 # Kinetic Dart SDK
 
-> This is a placeholder! Content coming soon!
+- [Package on pub.dev](https://pub.dev/packages/kinetic)
+- [GitHub Repo](https://github.com/kin-labs/kinetic-dart-sdk)
+- [Kinetic Dart Starter APp](https://github.com/kin-starters/kinetic-dart-starter)
+
+## Get Started or Add to an Existing Project
+
+Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your App.
+
+#### Installation (visit https://pub.dev/packages/kinetic for other versions)
+
+Add the package to your pubspec.yaml file below dependencies.
+
+```yaml
+kinetic: ^1.0.0-rc.1
+```
+
+#### Instantiate the Kinetic Client
+
+The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+
+We recommend starting with Devnet before moving on to Mainnet.
+
+```dart
+KineticSdkConfig sdkConfig = KineticSdkConfig(
+  index: 1,
+  endpoint: 'https://sandbox.kinetic.host',
+  environment: 'devnet',
+  logger: Logger(),
+);
+KineticSdk sdk = await KineticSdk.setup(sdkConfig);
+```
+
+Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+
+#### Create Account
+You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to creat the keypair we use for creating the account on the blockchain.
+```dart
+Keypair owner = await Keypair.random();
+```
+
+#### Check Balance
+```dart
+GetBalanceOptions options = GetBalanceOptions(account: owner.publicKey);
+BalanceResponse? res = await sdk.getBalance(options: options);
+dynamic res = await kinetic.getBalance(kinetic.keypair.solanaPublicKey.toBase58());
+```
+
+#### Airdrop 10 Kin (Devnet)
+```dart
+RequestAirdropOptions options = RequestAirdropOptions(
+account: owner.publicKey,
+mint: mint,
+amount: "10",
+commitment: RequestAirdropRequestCommitmentEnum.finalized,
+);
+RequestAirdropResponse? res = await sdk.requestAirdrop(options: options);
+```
+
+#### Transfer Kin
+```dart
+Keypair alice = await Keypair.random();
+
+MakeTransferOptions options = MakeTransferOptions(
+amount: "1.0",
+destination: alice.publicKey,
+commitment: MakeTransferRequestCommitmentEnum.finalized,
+mint: mint,
+owner: owner,
+referenceId: "our-ref-id",
+referenceType: "some-tx",
+type: TransactionType.p2p,
+senderCreate: false,
+);
+
+Transaction? transaction = await sdk.makeTransfer(options: options);
+```
+
+#### Get Solana Explorer URL
+```dart
+String? res = await sdk.getExplorerUrl("address/${alice.publicKey}");
+```
+
+#### Get Account History
+```dart
+GetHistoryOptions options = GetHistoryOptions(account: alice.publicKey, mint: mint);
+List<HistoryResponse>? res = await sdk.getHistory(options: options);
+	```

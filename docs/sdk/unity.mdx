@@ -1,0 +1,83 @@
+---
+sidebar_position: 3
+---
+
+# Kinetic Unity SDK
+
+- [GitHub Repo](https://github.com/kin-labs/kinetic-unity-sdk)
+- [Kinetic Unity Starter APp](https://github.com/kin-starters/kinetic-unity-starter)
+
+## Get Started or Add to an Existing Project
+
+Getting started with Kin is incredibly straightforward. Just follow the steps below to start transacting with Kin in your App.
+
+
+#### Installation
+
+* Open [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) window.
+* Click the add **+** button in the status bar.
+* The options for adding packages appear.
+* Select Add package from git URL from the add menu. A text box and an Add button appear.
+* Enter the `https://github.com/kin-labs/kinetic-unity-sdk.git` Git URL in the text box and click Add.
+* Once the package is installed, in the Package Manager inspector you will have Samples. Click on Import
+* You may also install a specific package version by using the URL with the specified version.
+  * `https://github.com/kin-labs/kinetic-unity-sdk#X.Y.X`
+  * Please note that the version `X.Y.Z` stated here is to be replaced with the version you would like to get.
+  * You can find all the available releases [here](https://github.com/kin-labs/kinetic-unity-sdk/releases).
+  * The latest available release version is [![Last Release](https://img.shields.io/github/v/release/kin-labs/kinetic-unity-sdk)](https://github.com/kin-labs/kinetic-unity-sdk/releases/latest)
+* You will find a sample App in `Samples/Kinetic SDK/0.1.0/Kinetic SDK example/ExampleKinSDK/scenes/KinSampleScene.unity````
+
+
+#### Instantiate the Kinetic Client
+
+The Kinetic Client will give you access to all the methods you need to work with Kin on the blockchain.
+
+We recommend starting with Devnet before moving on to Mainnet.
+
+```csharp
+sdk = await KineticSdk.Setup(
+	new KineticSdkConfig(
+		endpoint: "https://sandbox.kinetic.host/",
+		environment: 'devnet',
+		index:1,
+	)
+);
+```
+Don't have an App Index? Register your App on our Developer Portal so you can get your App Index that allows you to transact with our SDKs and earn via the KRE.
+
+
+#### Create Account
+You can create accounts from existing mnemonics or secret keys. In this case we'll generate a mnemonic and use that to create the keypair we use for creating the account on the blockchain.
+
+```csharp
+var mnemonic = Keypair.GenerateMnemonic();
+var keypair = Keypair.FromMnemonic(mnemonic);
+await sdk.CreateAccount(keypair);
+```
+#### Check Balance
+```csharp
+var balance = await sdk.GetBalance(keypair.PublicKey);
+```
+#### Airdrop Funds (devnet)
+```csharp
+await sdk.RequestAirdrop( account: keypair.PublicKey, amount: "1000" );
+```
+#### Transfer Kin
+```csharp
+await sdk.MakeTransfer(
+	amount: "5000",
+	destination: "BQJi5K2s4SDDbed1ArpXjb6n7yVUfM34ym9a179MAqVo",
+	owner: keypair,
+	type: TransactionType.P2P // Can be Unknown, None, Earn, Spend or P2P
+);
+```
+
+#### Get Transaction Details
+```csharp
+await sdk.GetTransaction(signature: transactionSignature);
+```
+
+#### Get Account History
+```csharp
+    await sdk.GetHistory(account: keypair.PublicKey);
+```
