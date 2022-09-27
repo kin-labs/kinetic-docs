@@ -72,7 +72,7 @@ const config = {
           },
           // {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: "https://github.com/kin-labs/kinetic-docs",
+            href: "https://github.com/kin-labs/kinetic",
             label: "GitHub",
             position: "right",
           },
@@ -87,6 +87,18 @@ const config = {
               {
                 label: "Tutorial",
                 to: "/docs/intro",
+              },
+              {
+                label: "Kinetic Dart SDK",
+                to: "/docs/sdk/dart",
+              },
+              {
+                label: "Kinetic TypeScript SDK",
+                to: "/docs/sdk/typescript",
+              },
+              {
+                label: "Kinetic Unity SDK",
+                to: "/docs/sdk/unity",
               },
             ],
           },
